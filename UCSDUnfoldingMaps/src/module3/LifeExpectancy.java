@@ -17,7 +17,6 @@ public class LifeExpectancy extends PApplet {
     List<Feature> countries;
     List<Marker> countryMarkers;
 
-    // helper method because it's private?
     private Map<String, Float> loadExpectancyFromCSV (String filename){
         Map<String, Float> LifeExpectancy = new HashMap<String, Float>();
         String[] rows = loadStrings(filename);
