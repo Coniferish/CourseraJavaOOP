@@ -20,8 +20,6 @@ import de.fhpotsdam.unfolding.utils.MapUtils;
 //Parsing library
 import parsing.ParseFeed;
 
-import processing.core.*;
-
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
