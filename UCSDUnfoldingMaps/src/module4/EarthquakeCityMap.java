@@ -60,6 +60,12 @@ public class EarthquakeCityMap extends PApplet {
 	// A List of country markers
 	private List<Marker> countryMarkers;
 	
+	public static void main(String[] args) {
+		EarthquakeCityMap earthquakeCityMap = new EarthquakeCityMap();
+		String[] processingArgs = { "EarthquakeCityMap" };
+		PApplet.runSketch(processingArgs, earthquakeCityMap);
+	  }
+
 	public void setup() {		
 		// (1) Initializing canvas and map tiles
 		size(900, 700, OPENGL);
@@ -70,7 +76,7 @@ public class EarthquakeCityMap extends PApplet {
 		else {
 			map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
-		    //earthquakesURL = "2.5_week.atom";
+		    earthquakesURL = "2.5_week.atom";
 		}
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
