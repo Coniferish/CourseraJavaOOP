@@ -54,6 +54,7 @@ public class EarthquakeCityMap extends PApplet {
 		PApplet.runSketch(processingArgs, earthquakeCityMap);
 	  }
 
+	  
 	public void setup() {		
 		size(900, 700, OPENGL);
 		map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
@@ -68,7 +69,6 @@ public class EarthquakeCityMap extends PApplet {
 		
 		// WHEN TAKING THIS QUIZ: Uncomment the next line
 		//earthquakesURL = "quiz1.atom";
-		
 		
 		// (2) read in earthquake data and geometric properties
 		List<Feature> countries = GeoJSONReader.loadData(this, countryFile);
@@ -111,12 +111,10 @@ public class EarthquakeCityMap extends PApplet {
 		background(0);
 		map.draw();
 		addKey();
-		
 	}
 	
-	// helper method to draw key in GUI
 	private void addKey() {	
-		// Remember you can use Processing's graphics methods here
+		// Processing's graphics methods
 		fill(255, 250, 240);
 		rect(25, 50, 150, 250);
 		
@@ -139,11 +137,9 @@ public class EarthquakeCityMap extends PApplet {
 	}
 
 	
-	
 	// Checks whether this quake occurred on land.  If it did, it sets the 
 	// "country" property of its PointFeature to the country where it occurred
-	// and returns true.  Notice that the helper method isInCountry will
-	// set this "country" property already.  Otherwise it returns false.
+	// and returns true.
 	private boolean isLand(PointFeature earthquake) {
 		HashMap<String, Object> properties = earthquake.getProperties();
 	

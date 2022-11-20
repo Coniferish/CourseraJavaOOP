@@ -28,10 +28,7 @@ public class CityMarker extends SimplePointMarker {
 	}
 	
 	
-	
-	/**
-	 * Implementation of method to draw marker on the map.
-	 */
+	// Implementation of draw method for markers
 	public void draw(PGraphics pg, float x, float y) {
 		// Save previous drawing style
 		pg.pushStyle();
