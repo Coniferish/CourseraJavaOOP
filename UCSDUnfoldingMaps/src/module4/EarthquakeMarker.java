@@ -3,6 +3,7 @@ package module4;
 import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PGraphics;
+// import java.awt.Color;
 
 /** Implements a visual marker for earthquakes on an earthquake map
  * 
@@ -14,30 +15,22 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 {
 	
 	// Did the earthquake occur on land?  This will be set by the subclasses.
-	protected boolean isOnLand;
-
-	// SimplePointMarker has a field "radius" which is inherited
-	// by Earthquake marker:
-	// protected float radius;
-	//
-	// You will want to set this in the constructor, either
-	// using the thresholds below, or a continuous function
-	// based on magnitude. 
-  
-	
+	protected boolean isOnLand;	
 	
 	/** Greater than or equal to this threshold is a moderate earthquake */
 	public static final float THRESHOLD_MODERATE = 5;
-	/** Greater than or equal to this threshold is a light earthquake */
 	public static final float THRESHOLD_LIGHT = 4;
 
-	/** Greater than or equal to this threshold is an intermediate depth */
 	public static final float THRESHOLD_INTERMEDIATE = 70;
-	/** Greater than or equal to this threshold is a deep depth */
 	public static final float THRESHOLD_DEEP = 300;
 
 	// ADD constants for colors
-
+	public static final int[] RED = {255,0,0};
+	public static final int[] ORANGE = {255,160,122};
+	public static final int[] YELLOW = {255,255,153};
+	// static final Color YELLOW = new Color(255,255,153); 
+	// The line above doesn't work because pg.fill() is expecting integers, not a color obj
+	// It can work if you use the color.getRed (etc.) methods and import java.awt.Color, but that seems unnecessary...
 	
 	// abstract method implemented in derived classes
 	public abstract void drawEarthquake(PGraphics pg, float x, float y);
@@ -67,22 +60,32 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		// call abstract method implemented in child class to draw marker shape
 		drawEarthquake(pg, x, y);
 		
-		// OPTIONAL TODO: draw X over marker if within past day		
+		// draw X over marker if within past day
+		if (isPastDay()) {
+			drawX(pg, x, y);
+		}
 		
 		// reset to previous styling
 		pg.popStyle();
 		
+	}
+
+
+	private void drawX(PGraphics pg, float x, float y){
+		float r = this.getRadius();
+		pg.line(x-r, y-r, x+r, y+r);
+		pg.line(x-r, y+r, x+r, y-r);
 	}
 	
 	
 	private void colorDetermine(PGraphics pg) {
 		float depth = this.getDepth();
 		if (depth >= THRESHOLD_DEEP) {
-			pg.fill(255,0,0);
+			pg.fill(RED[0], RED[1], RED[2]);
 		} else if (depth >= THRESHOLD_INTERMEDIATE) {
-			pg.fill(250,128,114);
+			pg.fill(ORANGE[0], ORANGE[1], ORANGE[2]);
 		} else {
-			pg.fill(255,255,102);
+			pg.fill(YELLOW[0], YELLOW[1], YELLOW[2]);
 		}
 	}
 	
@@ -111,6 +114,14 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	public boolean isOnLand()
 	{
 		return isOnLand;
+	}
+
+	public Boolean isPastDay() {
+		Object age = getProperty("age");
+		if (age.toString().equals("Past Day")){
+			return true;
+		}
+		return false;
 	}
 	
 	

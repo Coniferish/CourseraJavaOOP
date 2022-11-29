@@ -1,7 +1,6 @@
 package module4;
 
 import de.fhpotsdam.unfolding.data.PointFeature;
-import de.fhpotsdam.unfolding.marker.Marker;
 import processing.core.PGraphics;
 
 /** Implements a visual marker for land earthquakes on an earthquake map
@@ -30,15 +29,17 @@ public class LandQuakeMarker extends EarthquakeMarker {
 
 		float r = this.getRadius();
 		pg.ellipse(x, y, r, r);
+
+		// if (isPastDay()) {
+		// 	drawX(pg, x, y);
+		// }
 	}
-	
+
 
 	// Get the country the earthquake is in
 	public String getCountry() {
 		return (String) getProperty("country");
 	}
-
-
 
 		
 }
