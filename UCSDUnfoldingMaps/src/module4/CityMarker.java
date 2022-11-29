@@ -33,7 +33,7 @@ public class CityMarker extends SimplePointMarker {
 		// Save previous drawing style
 		pg.pushStyle();
 
-		pg.fill(150, 30, 30);
+		pg.fill(138,43,226);
 		pg.triangle(x, y-TRI_SIZE, x-TRI_SIZE, y+TRI_SIZE, x+TRI_SIZE, y+TRI_SIZE);
 		
 		// HINT: pg is the graphics object on which you call the graphics

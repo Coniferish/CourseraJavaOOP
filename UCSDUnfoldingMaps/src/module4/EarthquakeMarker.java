@@ -74,13 +74,16 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		
 	}
 	
-	// determine color of marker from depth, and set pg's fill color 
-	// using the pg.fill method.
-	// We suggest: Deep = red, intermediate = blue, shallow = yellow
-	// But this is up to you, of course.
-	// You might find the getters below helpful.
+	
 	private void colorDetermine(PGraphics pg) {
-		this.getDepth();
+		float depth = this.getDepth();
+		if (depth >= THRESHOLD_DEEP) {
+			pg.fill(255,0,0);
+		} else if (depth >= THRESHOLD_INTERMEDIATE) {
+			pg.fill(250,128,114);
+		} else {
+			pg.fill(255,255,102);
+		}
 	}
 	
 	
