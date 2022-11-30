@@ -116,7 +116,7 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() {	
 		// Processing's graphics methods
 		fill(255, 250, 240);
-		rect(25, 50, 150, 250);
+		rect(25, 50, 150, 300);
 		
 		fill(0);
 		textAlign(LEFT, CENTER);
@@ -125,15 +125,38 @@ public class EarthquakeCityMap extends PApplet {
 		
 		fill(color(255, 0, 0));
 		ellipse(50, 125, 15, 15);
-		fill(color(255, 255, 0));
-		ellipse(50, 175, 10, 10);
-		fill(color(0, 0, 255));
-		ellipse(50, 225, 5, 5);
-		
-		fill(0, 0, 0);
+		fill(color(255,160,122));
+		ellipse(50, 150, 15, 15);
+		fill(color(255,255,153));
+		ellipse(50, 175, 15, 15);
+
+		fill(color(138,43,226));
+		int x = 50;
+		int y = 220;
+		int TRI_SIZE = 7;
+		triangle(x, y-TRI_SIZE, x-TRI_SIZE, y+TRI_SIZE, x+TRI_SIZE, y+TRI_SIZE);
+
+		fill(255, 250, 240);
+		ellipse(50, 270, 15, 15);
+		// rect(75, 50, 50, 100);
+		// rect(x-r/2, y-r/2, r, r);
+		int r = 7;
+		rect(50-r, 245-r, 14, 14);
+		int lineX = 50;
+		int lineY = 315;
+		line(lineX-7, lineY-7, lineX+7, lineY+7);
+		line(lineX-7, lineY+7, lineX+7, lineY-7);
+		// pg.line(x-r, y-r, x+r, y+r);
+		// pg.line(x-r, y+r, x+r, y-r);
+
+		fill(0);
 		text("5.0+ Magnitude", 75, 125);
-		text("4.0+ Magnitude", 75, 175);
-		text("Below 4.0", 75, 225);
+		text("4.0+ Magnitude", 75, 150);
+		text("<4.0 Magnitude", 75, 175);
+		text("City Marker", 75, 220);
+		text("Ocean", 75, 245);
+		text("Land", 75, 270);
+		text("Within 24 hrs", 75, 315);
 	}
 
 	
